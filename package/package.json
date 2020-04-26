@@ -16,12 +16,6 @@
     "lint:fix": "yarn eslint --ext .ts --fix src",
     "prepack": "yarn build"
   },
-  "husky": {
-    "hooks": {
-      "pre-commit": "yarn build",
-      "post-checkout": "git config merge.ours.driver true"
-    }
-  },
   "devDependencies": {
     "@types/jest": "^25.2.1",
     "@types/react": "^16.9.34",
