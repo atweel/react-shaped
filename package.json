@@ -18,7 +18,7 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "yarn lint && yarn build",
+      "pre-commit": "yarn build",
       "post-checkout": "git config merge.ours.driver true"
     }
   },
