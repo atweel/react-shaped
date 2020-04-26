@@ -8,8 +8,8 @@ on:
       - master
 
 jobs:
-  release:
-    name: Build
+  integrate:
+    name: Integrate
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
@@ -28,7 +28,6 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-yarn-
       - run: yarn install
-      - run: yarn lint
-      - run: yarn build
+      - run: yarn pack
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPMJS_ORG_READER_TOKEN }}
