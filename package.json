@@ -17,10 +17,12 @@
   },
   "scripts": {
     "prebuild": "yarn lint",
-    "build": "yarn workspace @atweel/restyled build",
+    "build": "lerna run build",
+    "postbuild": "yarn test",
     "lint": "yarn eslint --ext .ts .",
     "lint:fix": "yarn eslint --ext .ts --fix .",
-    "test": "jest"
+    "test": "jest",
+    "pack": "lerna exec yarn pack"
   },
   "husky": {
     "hooks": {
@@ -29,6 +31,7 @@
     }
   },
   "devDependencies": {
-    "@types/node": "^13.13.2"
+    "@types/node": "^13.13.2",
+    "lerna": "^3.20.2"
   }
 }
