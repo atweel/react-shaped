@@ -12,10 +12,10 @@ module.exports = {
   // browser: false,
 
   // The directory where Jest should store its cached dependency information
-  // cacheDirectory: "/private/var/folders/0v/c2thhw8n2fl8c8mf1t_gwcc80000gn/T/jest_dx",
+  // cacheDirectory: "/tmp/jest_rt",
 
   // Automatically clear mock calls and instances between every test
-  clearMocks: true,
+  // clearMocks: false,
 
   // Indicates whether the coverage information should be collected while executing the test
   collectCoverage: true,
@@ -24,7 +24,7 @@ module.exports = {
   collectCoverageFrom: [ "**/*.ts?(x)", "!**/*.d.ts?(x)" ],
 
   // The directory where Jest should output its coverage files
-  coverageDirectory: "coverage",
+  // coverageDirectory: undefined,
 
   // An array of regexp pattern strings used to skip coverage collection
   // coveragePathIgnorePatterns: [
@@ -32,12 +32,12 @@ module.exports = {
   // ],
 
   // A list of reporter names that Jest uses when writing coverage reports
-  coverageReporters: [
-    // "json",
-    "text",
-    "lcov",
-    // "clover"
-  ],
+  // coverageReporters: [
+  //   "json",
+  //   "text",
+  //   "lcov",
+  //   "clover"
+  // ],
 
   // An object that configures minimum threshold enforcement for coverage results
   // coverageThreshold: undefined,
@@ -94,10 +94,7 @@ module.exports = {
   preset: 'ts-jest',
 
   // Run tests from one or more projects
-  projects: [
-    "<rootDir>",
-    "<rootDir>/package"
-  ],
+  // projects: undefined,
 
   // Use this configuration option to add custom reporters to Jest
   // reporters: undefined,
@@ -145,7 +142,7 @@ module.exports = {
 
   // The glob patterns Jest uses to detect test files
   testMatch: [
-    "**/tests/**/*.[t]s?(x)"
+    "**/?(*.)+(spec|test).ts?(x)"
   ],
 
   // An array of regexp pattern strings that are matched against all test paths, matched tests are skipped
