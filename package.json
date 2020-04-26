@@ -19,8 +19,8 @@
     "prebuild": "yarn lint",
     "build": "lerna run build",
     "postbuild": "yarn test",
-    "lint": "yarn eslint --ext .ts .",
-    "lint:fix": "yarn eslint --ext .ts --fix .",
+    "lint": "yarn eslint --ext .ts --ext .tsx  .",
+    "lint:fix": "yarn lint --fix",
     "test": "jest",
     "pack": "lerna exec yarn pack"
   },
