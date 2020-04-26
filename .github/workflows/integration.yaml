@@ -32,7 +32,7 @@ jobs:
       - name: Install dependencies
         run: yarn install --frozen-lockfile
       - name: Build the package
-        run: yarn pack
+        run: yarn run pack
       - name: Resolve package file path
         id: resolve-package-file
         run: echo "::set-output name=path::$(find . -name *.tgz)"
