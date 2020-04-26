@@ -16,9 +16,10 @@
     ]
   },
   "scripts": {
+    "prebuild": "yarn lint",
     "build": "yarn workspace @atweel/restyled build",
-    "lint": "yarn workspace @atweel/restyled lint",
-    "lint:fix": "yarn workspace @atweel/restyled lint:fix",
+    "lint": "yarn eslint --ext .ts .",
+    "lint:fix": "yarn eslint --ext .ts --fix .",
     "test": "jest"
   },
   "husky": {
