@@ -10,10 +10,7 @@
     "lib"
   ],
   "scripts": {
-    "prebuild": "yarn lint",
     "build": "yarn ttsc",
-    "lint": "yarn eslint --ext .ts src",
-    "lint:fix": "yarn eslint --ext .ts --fix src",
     "prepack": "yarn build"
   },
   "devDependencies": {
