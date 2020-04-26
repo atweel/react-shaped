@@ -21,6 +21,12 @@
     "lint:fix": "yarn workspace @atweel/restyled lint:fix",
     "test": "jest"
   },
+  "husky": {
+    "hooks": {
+      "pre-commit": "yarn build",
+      "post-checkout": "git config merge.ours.driver true"
+    }
+  },
   "devDependencies": {
     "@types/node": "^13.13.2"
   }
