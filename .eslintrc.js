@@ -9,6 +9,11 @@ module.exports = {
     "tests/hooks", 
     "*.config.js"
   ],
+  settings: {
+    react: {
+      version: "16.0",
+    }
+  },
   parser: '@typescript-eslint/parser',
   plugins: [
     '@typescript-eslint',
