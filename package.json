@@ -23,8 +23,7 @@
     "lint:fix": "yarn lint --fix",
     "test": "jest",
     "prepack": "yarn lint",
-    "pack": "lerna exec yarn pack",
-    "dummy": "false"
+    "pack": "lerna exec yarn pack"
   },
   "husky": {
     "hooks": {
