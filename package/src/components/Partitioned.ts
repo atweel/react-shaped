@@ -12,8 +12,11 @@ type PartitionedComponentProperties = VerticallyPartitionedComponentProperties |
 
 const Partitioned = styled.div<PartitionedComponentProperties>``;
 
-Partitioned.displayName = 'Stacked';
+Partitioned.displayName = 'Partitioned';
 
 export {
     Partitioned,
+    PartitionedComponentProperties,
+    VerticallyPartitionedComponentProperties,
+    HorizontallyPartitionedComponentProperties,
 };

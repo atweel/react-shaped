@@ -69,5 +69,9 @@
           "transform": "@zerollup/ts-transform-paths"
         }
       ]
-  }
+  },
+  "include": [
+    "src/**/*.ts",
+    "src/**/*.tsx"
+  ]
 }
