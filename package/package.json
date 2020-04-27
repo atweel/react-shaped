@@ -1,6 +1,6 @@
 {
   "name": "@atweel/restyled",
-  "version": "1.0.0-alpha.0",
+  "version": "1.0.0-beta.0",
   "main": "lib/exports.js",
   "repository": "https://github.com/atweel/restyled.git",
   "author": "Eduard Malakhov <eduard@atweel.com>",
