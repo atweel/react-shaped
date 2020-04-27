@@ -1,6 +1,6 @@
 {
   "name": "root",
-  "version": "1.0.0",
+  "version": "1.0.0-alpha.0",
   "main": "index.js",
   "repository": "https://github.com/atweel/restyled.git",
   "author": "Eduard Malakhov <eduard@atweel.com>",
