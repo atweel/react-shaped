@@ -1,20 +1,29 @@
 {
-  "name": "@atweel/restyled",
-  "version": "1.0.0-alpha.0",
-  "main": "lib/exports.js",
+  "name": "root",
+  "version": "1.0.0-beta.0",
+  "main": "index.js",
   "repository": "https://github.com/atweel/restyled.git",
   "author": "Eduard Malakhov <eduard@atweel.com>",
   "license": "MIT",
-  "private": false,
-  "files": [
-    "lib"
-  ],
+  "private": true,
+  "workspaces": {
+    "packages": [
+      "package"
+    ],
+    "nohoist": [
+      "**/react-native",
+      "**/react-native/**"
+    ]
+  },
   "scripts": {
     "prebuild": "yarn lint",
-    "build": "yarn ttsc",
-    "lint": "yarn eslint --ext .ts src",
-    "lint:fix": "yarn eslint --ext .ts --fix src",
-    "prepack": "yarn build"
+    "build": "lerna run build",
+    "postbuild": "yarn test",
+    "lint": "yarn eslint --ext .ts --ext .tsx  .",
+    "lint:fix": "yarn lint --fix",
+    "test": "jest",
+    "prepack": "yarn lint",
+    "pack": "lerna exec yarn pack"
   },
   "husky": {
     "hooks": {
@@ -23,26 +32,7 @@
     }
   },
   "devDependencies": {
-    "@types/jest": "^25.2.1",
-    "@types/react": "^16.9.34",
-    "@types/styled-components": "^5.1.0",
-    "@typescript-eslint/eslint-plugin": "^2.29.0",
-    "@typescript-eslint/parser": "^2.29.0",
-    "@zerollup/ts-transform-paths": "^1.7.17",
-    "eslint": "^6.8.0",
-    "eslint-plugin-react": "^7.19.0",
-    "husky": "^4.2.5",
-    "jest": "^25.4.0",
-    "ts-loader": "^7.0.1",
-    "ts-node": "^8.9.1",
-    "tsconfig-paths-webpack-plugin": "^3.2.0",
-    "ttypescript": "^1.5.10",
-    "typescript": "^3.8.3",
-    "webpack": "^4.43.0",
-    "webpack-cli": "^3.3.11"
-  },
-  "peerDependencies": {
-    "react": "^16.13.1",
-    "styled-components": "^5.1.0"
+    "@types/node": "^13.13.2",
+    "lerna": "^3.20.2"
   }
 }
