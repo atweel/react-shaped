@@ -31,6 +31,6 @@ RUN apt-get update && \
     mkdir -p /home/$USERNAME && \
     chown -R $USER_UID:$USER_GID /home/$USERNAME
 
-RUN yarn global add typescript lerna jest
+RUN yarn global add typescript lerna jest grunt-cli
 
 USER ${USERNAME}
