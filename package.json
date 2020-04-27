@@ -33,7 +33,13 @@
     }
   },
   "devDependencies": {
+    "@types/grunt": "^0.4.25",
     "@types/node": "^13.13.2",
-    "lerna": "^3.20.2"
+    "grunt": "^1.1.0",
+    "grunt-cli": "^1.3.2",
+    "grunt-git": "^1.0.14",
+    "lerna": "^3.20.2",
+    "ts-node": "^8.9.1",
+    "typescript": "^3.8.3"
   }
 }
