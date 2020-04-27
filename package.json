@@ -24,7 +24,7 @@
     "test": "jest",
     "prepack": "yarn lint",
     "pack": "lerna exec yarn pack",
-    "dummy": "false"
+    "dummy": "true"
   },
   "husky": {
     "hooks": {
