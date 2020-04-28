@@ -99,6 +99,6 @@ jobs:
         with:
           base: ${{ matrix.target }}
           author: Robby Atweel <robby@atweel.com>
-          branch: patches/v1.0/master
+          branch: patches/${{ matrix.target }}
           draft: true
           token: ${{ secrets.ROBBYS_GITHUB_TOKEN }}
