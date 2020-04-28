@@ -1,2 +1,2 @@
-**/package.json merge=package-json
-lerna.json merge=package-json
+**/package.json merge=versioned-json
+lerna.json merge=versioned-json

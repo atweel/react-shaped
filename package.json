@@ -29,7 +29,7 @@
   "husky": {
     "hooks": {
       "pre-commit": "yarn build",
-      "post-checkout": "git config merge.ours.driver true"
+      "post-checkout": "git config merge.versioned-json.driver $(realpath scripts/merge_versioned_json.sh)"
     }
   },
   "devDependencies": {
