@@ -76,6 +76,7 @@ jobs:
         uses: actions/checkout@v2
         with:
           ref: releases/v1.0
+          fetch-depth: 0
       - name: Configure merge driver(s)
         run: git config merge.versioned-json.driver $(realpath scripts/merge_versioned_json.sh)
       - name: Merge changes
