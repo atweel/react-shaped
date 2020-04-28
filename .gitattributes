@@ -1,1 +1,2 @@
-package.json merge=package-json
+**/package.json merge=package-json
+lerna.json merge=package-json
