@@ -90,12 +90,11 @@ jobs:
           git merge origin/master &&
           echo "::set-output name=pr-source-branch::patches/v1.0/master" ||
           echo "::set-output name=pr-source-branch::master"
-      - name: Create Pull Request
+      - name: Create pull request
         uses: peter-evans/create-pull-request@v2
         with:
           base: releases/v1.0
           author: Robby Atweel <robby@atweel.com>
           branch: patches/v1.0/master
-          branch-suffix: timestamp
           draft: true
           token: ${{ secrets.ROBBYS_GITHUB_TOKEN }}
