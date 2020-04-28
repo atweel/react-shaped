@@ -86,8 +86,8 @@ jobs:
       - name: Merge changes
         run: |
           git fetch && 
+          git checkout -b patches/v1.0/master && 
           git merge origin/master &&
-          git branch --set-upstream-to origin/patches/v1.0/master &&
           git push &&
           gh pr create --base releases/v1.0 --fill
           exit 0
