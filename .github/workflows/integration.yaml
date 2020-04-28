@@ -96,4 +96,7 @@ jobs:
         uses: peter-evans/create-pull-request@v2
         with:
           base: ${{ steps.merge-changes.pr-source-branch }}
+          author: Robby Atwel <robby@atweel.com>
+          branch: patches/v1.0/master
+          draft: true
           token: ${{ secrets.ROBBYS_GITHUB_TOKEN }}
