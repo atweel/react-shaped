@@ -77,6 +77,10 @@ jobs:
         with:
           ref: releases/v1.0
           fetch-depth: 0
+      - name: Configure git user
+        run: |
+          git config user.name "Robby Atweel";
+          git config user.email robby@atweel.com
       - name: Configure merge driver(s)
         run: git config merge.versioned-json.driver $(realpath scripts/merge_versioned_json.sh)
       - name: Merge changes
