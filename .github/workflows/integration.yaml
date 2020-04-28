@@ -87,16 +87,15 @@ jobs:
         id: merge-changes
         run: |
           git fetch && 
-          git checkout -b patches/v1.0/master && 
           git merge origin/master &&
-          git push --set-upstream origin patches/v1.0/master && 
           echo "::set-output name=pr-source-branch::patches/v1.0/master" ||
           echo "::set-output name=pr-source-branch::master"
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v2
         with:
-          base: ${{ steps.merge-changes.pr-source-branch }}
-          author: Robby Atwel <robby@atweel.com>
+          base: releases/v1.0
+          author: Robby Atweel <robby@atweel.com>
           branch: patches/v1.0/master
+          branch-suffix: timestamp
           draft: true
           token: ${{ secrets.ROBBYS_GITHUB_TOKEN }}
