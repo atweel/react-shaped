@@ -84,10 +84,18 @@ jobs:
       - name: Configure merge driver(s)
         run: git config merge.versioned-json.driver $(realpath scripts/merge_versioned_json.sh)
       - name: Merge changes
+        id: merge-changes
         run: |
           git fetch && 
           git merge origin/master &&
-          git add . && git commit -m"Merge master" && 
-          git push --set-upstream origin patches/v1.0/master &&
-          gh pr create --base releases/v1.0
-          exit 0
+          echo "::set-output name=pr-source-branch::patches/v1.0/master" ||
+          echo "::set-output name=pr-source-branch::master"
+      - name: Create Pull Request
+        uses: peter-evans/create-pull-request@v2
+        with:
+          base: releases/v1.0
+          author: Robby Atweel <robby@atweel.com>
+          branch: patches/v1.0/master
+          branch-suffix: timestamp
+          draft: true
+          token: ${{ secrets.ROBBYS_GITHUB_TOKEN }}
