@@ -72,10 +72,10 @@ jobs:
     name: Prepare a patch
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout the branch
+      - name: Checkout source branch
         uses: actions/checkout@v2
-        with:
-            ref: releases/v1.0
+      - name: Checkout target branch
+        run:  git fetch && git checkout releases/v1.0
       - name: Configure merge driver(s)
         run: git config merge.versioned-json.driver $(realpath scripts/merge_versioned_json.sh)
       - name: Merge changes
