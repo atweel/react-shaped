@@ -1,6 +1,6 @@
 {
   "name": "root",
-  "version": "1.0.0-beta.1",
+  "version": "1.0.0-beta.2",
   "main": "index.js",
   "repository": "https://github.com/atweel/restyled.git",
   "author": "Eduard Malakhov <eduard@atweel.com>",
@@ -29,7 +29,7 @@
   "husky": {
     "hooks": {
       "pre-commit": "yarn build",
-      "post-checkout": "git config merge.versioned-json.driver $(realpath scripts/merge_versioned_json.sh)"
+      "post-checkout": "git config merge.versioned-json.driver \"$(realpath scripts/merge_versioned_json.sh) %A %O %B\""
     }
   },
   "devDependencies": {
