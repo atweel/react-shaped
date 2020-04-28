@@ -67,3 +67,18 @@ jobs:
             ${{ runner.os }}-yarn-
       - name: Install dependencies
         run: yarn install --frozen-lockfile
+
+  prepare_patch:
+    name: Prepare a patch
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout the branch
+        uses: actions/checkout@v2
+        with:
+            ref: refs/remotes/origin/releases/v1.0
+      - name: Configure merge driver(s)
+        run: git config merge.versioned-json.driver $(realpath scripts/merge_versioned_json.sh)
+      - name: Merge changes
+        run: git merge master
+      - name: Push merged
+        run: git add . && git commit -m"Merge master" && git push origin ${GITHUB_REF#"refs/heads/"}:patches/v1.0/master
