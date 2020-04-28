@@ -87,8 +87,6 @@ jobs:
         run: |
           git fetch && 
           git merge origin/master &&
-          git add . && 
-          git commit -m"Merge branch 'master' into releases/v1.0" && 
           git push --set-upstream origin patches/v1.0/master &&
           gh pr create --base releases/v1.0
           exit 0
