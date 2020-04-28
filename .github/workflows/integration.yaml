@@ -87,7 +87,7 @@ jobs:
         run: |
           git fetch && 
           git merge origin/master &&
-          git branch -U origin/patches/v1.0/master &&
+          git branch --set-upstream-to origin/patches/v1.0/master &&
           git push &&
           gh pr create --base releases/v1.0 --fill
           exit 0
