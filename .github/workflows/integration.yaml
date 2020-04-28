@@ -84,6 +84,9 @@ jobs:
       - name: Configure merge driver(s)
         run: git config merge.versioned-json.driver $(realpath scripts/merge_versioned_json.sh)
       - name: Merge changes
-        run: git fetch && git merge origin/master
-      - name: Push merged
-        run: git add . && git commit -m"Merge master" && git push origin ${GITHUB_REF#"refs/heads/"}:patches/v1.0/master
+        run: |
+          git fetch && 
+          git merge origin/master &&
+          git add . && git commit -m"Merge master" && 
+          git push origin ${GITHUB_REF#"refs/heads/"}:patches/v1.0/master
+          exit 0
