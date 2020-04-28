@@ -90,8 +90,8 @@ jobs:
           git checkout -b patches/v1.0/master && 
           git merge origin/master &&
           git push --set-upstream origin patches/v1.0/master && 
-          echo "::set-output pr-source-branch=dir::patches/v1.0/master" ||
-          echo "::set-output pr-source-branch=dir::master"
+          echo "::set-output name=pr-source-branch::patches/v1.0/master" ||
+          echo "::set-output name=pr-source-branch::master"
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v2
         with:
