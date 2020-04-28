@@ -72,6 +72,8 @@ jobs:
     name: Prepare a patch
     runs-on: ubuntu-latest
     steps:
+      - name: Fetch remote branches
+        run: git fetch
       - name: Checkout the branch
         uses: actions/checkout@v2
         with:
