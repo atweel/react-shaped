@@ -29,7 +29,9 @@ RUN apt-get update && \
     passwd -d ${USERNAME} && \
     usermod -a -G sudo ${USERNAME} && \
     mkdir -p /home/$USERNAME && \
-    chown -R $USER_UID:$USER_GID /home/$USERNAME
+    chown -R $USER_UID:$USER_GID /home/$USERNAME && \
+    curl -L https://github.com/cli/cli/releases/download/v0.7.0/gh_0.7.0_linux_amd64.deb --output /tmp/gh.deb && \
+    apt -y install /tmp/gh.deb
 
 RUN yarn global add typescript lerna jest grunt-cli
 
