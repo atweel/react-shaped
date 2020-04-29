@@ -7,6 +7,8 @@ jobs:
   publish_package:
     name: Publish package
     runs-on: ubuntu-latest
+    env:
+      NODE_AUTH_TOKEN: ${{ secrets.ROBBYS_NPMJS_WRITER_TOKEN }}
     steps:
       - name: Check out the repository
         uses: actions/checkout@v2
@@ -45,3 +47,4 @@ jobs:
             --pre-dist-tag alpha \
             --message 'ci: Release %s' \
             --yes
+          
