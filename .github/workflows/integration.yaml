@@ -1,7 +1,7 @@
 name: "Integration workflow"
 on:
   push:
-    branches:
+    branches-ignore:
       - master
   pull_request:
     branches:
@@ -12,30 +12,37 @@ jobs:
     name: Build package
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout the branch
+      - name: Check out the repository
         uses: actions/checkout@v2
+
       - name: Setup node 12.x
         uses: actions/setup-node@v1
         with:
           node-version: '12.x'
           registry-url: 'https://registry.npmjs.org'
-      - name: Get yarn cache directory path
+
+      - name: Resolve yarn cache directory path
         id: yarn-cache-dir-path
         run: echo "::set-output name=dir::$(yarn cache dir)"
+
       - uses: actions/cache@v1
-        id: yarn-cache # use this to check for `cache-hit` (`steps.yarn-cache.outputs.cache-hit != 'true'`)
+        id: yarn-cache 
         with:
           path: ${{ steps.yarn-cache-dir-path.outputs.dir }}
           key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
           restore-keys: |
             ${{ runner.os }}-yarn-
+
       - name: Install dependencies
         run: yarn install --frozen-lockfile
+
       - name: Build the package
         run: yarn run pack
+
       - name: Resolve package file path
         id: resolve-package-file
         run: echo "::set-output name=path::$(find . -name *.tgz)"
+
       - name: Upload the package
         uses: actions/upload-artifact@v1
         with:
@@ -55,9 +62,11 @@ jobs:
         with:
           node-version: '12.x'
           registry-url: 'https://registry.npmjs.org'
+
       - name: Get yarn cache directory path
         id: yarn-cache-dir-path
         run: echo "::set-output name=dir::$(yarn cache dir)"
+
       - uses: actions/cache@v1
         id: yarn-cache # use this to check for `cache-hit` (`steps.yarn-cache.outputs.cache-hit != 'true'`)
         with:
@@ -65,40 +74,13 @@ jobs:
           key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
           restore-keys: |
             ${{ runner.os }}-yarn-
+
       - name: Install dependencies
         run: yarn install --frozen-lockfile
 
-  draft_patches:
-    name: Draft patches
+  publish_package:
+    name: Publish package
     runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        target:
-          - releases/v1.0
-    steps:
-      - name: Checkout source branch
-        uses: actions/checkout@v2
-        with:
-          ref: ${{ matrix.target }}
-          fetch-depth: 0
-      - name: Configure git user
-        run: |
-          git config user.name "Robby Atweel";
-          git config user.email robby@atweel.com
-      - name: Configure merge driver(s)
-        run: git config merge.versioned-json.driver $(realpath scripts/merge_versioned_json.sh)
-      - name: Merge changes
-        id: merge-changes
-        run: |
-          git fetch && 
-          git merge origin/master &&
-          echo "::set-output name=pr-source-branch::patches/${{ matrix.target }}/master" ||
-          echo "::set-output name=pr-source-branch::master"
-      - name: Create pull request
-        uses: peter-evans/create-pull-request@v2
-        with:
-          base: ${{ matrix.target }}
-          author: Robby Atweel <robby@atweel.com>
-          branch: patches/${{ matrix.target }}
-          draft: true
-          token: ${{ secrets.ROBBYS_GITHUB_TOKEN }}
+    needs:
+      - build_package
+      - test_package
