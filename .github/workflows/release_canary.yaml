@@ -43,4 +43,5 @@ jobs:
             --canary \
             --preid alpha \
             --pre-dist-tag alpha \
-            --message 'ci: Release %s'
+            --message 'ci: Release %s' \
+            --yes
