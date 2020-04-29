@@ -29,8 +29,11 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-yarn-
 
+      - name: Install global packages
+        run: yarn global add lerna
+
       - name: Install dependencies
-        run: yarn install --frozen-lockfile
+        run: lerna bootstrap -- --frozen-lockfile
 
       - name: Build, test, and publish the package
         run: |
