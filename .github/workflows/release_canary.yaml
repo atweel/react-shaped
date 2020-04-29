@@ -10,6 +10,8 @@ jobs:
     steps:
       - name: Check out the repository
         uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
 
       - name: Setup node 12.x
         uses: actions/setup-node@v1
