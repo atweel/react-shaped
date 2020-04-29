@@ -31,7 +31,8 @@ RUN apt-get update && \
     mkdir -p /home/$USERNAME && \
     chown -R $USER_UID:$USER_GID /home/$USERNAME && \
     curl -L https://github.com/cli/cli/releases/download/v0.7.0/gh_0.7.0_linux_amd64.deb --output /tmp/gh.deb && \
-    apt -y install /tmp/gh.deb
+    apt -y install /tmp/gh.deb && \
+    git config --global core.editor "code --wait"
 
 RUN yarn global add typescript lerna jest grunt-cli
 
