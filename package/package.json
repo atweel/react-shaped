@@ -1,8 +1,8 @@
 {
-  "name": "@atweel/restyled",
+  "name": "@atweel/react-structured",
   "version": "1.0.0-alpha.2",
   "main": "lib/exports.js",
-  "repository": "https://github.com/atweel/restyled.git",
+  "repository": "https://github.com/atweel/react-structured.git",
   "author": "Eduard Malakhov <eduard@atweel.com>",
   "license": "MIT",
   "private": false,
