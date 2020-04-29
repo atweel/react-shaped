@@ -6,6 +6,9 @@
   "author": "Eduard Malakhov <eduard@atweel.com>",
   "license": "MIT",
   "private": false,
+  "publishConfig": {
+    "access": "restricted"
+  },
   "files": [
     "lib"
   ],
