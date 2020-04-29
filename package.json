@@ -23,7 +23,7 @@
     "lint:fix": "yarn lint --fix",
     "test": "jest",
     "prepack": "yarn lint",
-    "preversion": "git fetch origin 'refs/tags/*:refs/tags/*'"
+    "prepublish": "git fetch origin 'refs/tags/*:refs/tags/*'"
   },
   "husky": {
     "hooks": {
