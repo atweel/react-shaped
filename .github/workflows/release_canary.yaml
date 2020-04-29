@@ -30,7 +30,7 @@ jobs:
             ${{ runner.os }}-yarn-
 
       - name: Install global packages
-        run: yarn global add lerna
+        run: npm install -g lerna
 
       - name: Install dependencies
         run: lerna bootstrap -- --frozen-lockfile
